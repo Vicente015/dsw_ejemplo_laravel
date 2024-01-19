@@ -10,8 +10,8 @@
     <div class="row">
         @foreach ($viewData["productos"] as $producto)
           <div class="col-md-6 col-lg-4 mb-2">
-            <p>{{$producto['nombre']}}</p>
             <img src="{{ asset("/img/{$producto['imagen']}") }}" class="img-fluid rounded">
+            <a class="btn btn-primary" href="/product/{{$loop->index}}" role="button">{{$producto['nombre']}}</a>
         </div>
         @endforeach
     </div>
