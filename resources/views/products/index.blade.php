@@ -11,7 +11,7 @@
         @foreach ($viewData["productos"] as $producto)
           <div class="col-md-6 col-lg-4 mb-2">
             <img src="{{ asset("/img/{$producto['imagen']}") }}" class="img-fluid rounded">
-            <a class="btn btn-primary" href="/product/{{$loop->index}}" role="button">{{$producto['nombre']}}</a>
+            <a class="btn btn-primary" href="/products/{{$loop->index}}" role="button">{{$producto['nombre']}}</a>
         </div>
         @endforeach
     </div>

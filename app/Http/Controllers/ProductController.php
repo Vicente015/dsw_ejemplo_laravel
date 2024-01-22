@@ -41,10 +41,11 @@ class ProductController extends Controller
         return view("products.index")->with("viewData", $viewData);
     }
 
-    public function show($id) {
+    public function productinfo(Request $request, $key) {
         $viewData = [];
-        $viewData["title"] = "Producto $id";
+        $viewData["title"] = "Producto $key";
+        $viewData["producto"] = self::$products[$key];
 
-        return view("home.about")->with("viewData", $viewData);
+        return view("products.info")->with("viewData", $viewData);
     }
 }
