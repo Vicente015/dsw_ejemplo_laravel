@@ -10,7 +10,7 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-6">
-                <img src="{{ asset("/img/{$viewData['producto']['imagen']}") }}" alt="{{ $viewData["producto"]["nombre"] }}" class="img-fluid">
+                <img src="{{ asset("/img/{$viewData['producto']['image']}") }}" alt="{{ $viewData["producto"]["nombre"] }}" class="img-fluid">
             </div>
 
             <div class="col-md-6">
