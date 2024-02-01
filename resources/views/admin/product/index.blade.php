@@ -1,6 +1,15 @@
 @extends('layouts.admin')
 @section('title', $viewData["title"])
 @section('content')
+
+@if(session('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <i class="fas fa-check-circle me-2"></i>
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+@endif
+
 <div class="card mb-4">
     <div class="card-header">
         Crear producto
