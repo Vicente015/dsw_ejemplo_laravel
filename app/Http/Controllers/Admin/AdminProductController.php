@@ -28,8 +28,9 @@ class AdminProductController extends Controller
 
         if ($request->hasFile('image')) {
             // Obtener siguiente ID en la db
+            // todo: Actualizar imagen después para asegurar que el id no está duplicado
             $productId = Product::max('id') + 1;
-            $imageName = $productId . '_' . $request->file('image')->getClientOriginalExtension();
+            $imageName = $productId . '_' . $request->file('image')->getClientOriginalName() . $request->file('image')->getExtension();
 
             // Almacenar la imagen
             Storage::disk('public')->put(
