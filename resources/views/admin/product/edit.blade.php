@@ -75,7 +75,12 @@
                     <td>{{ $product->description }}</td>
                     <td>
                         <a href="{{ route('admin.product.edit', $product->id) }}" class="btn btn-primary">Editar</a>
-                        <a href="#">Eliminar</a>
+                        <form method="post" action="{{ route('admin.product.delete') }}">
+                            @csrf
+                            {{ method_field('DELETE') }}
+                            <input type="hidden" id="id" name="id" value="{{  $product->id }}">
+                            <button type="submit" class="btn btn-primary">Eliminar</button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach
