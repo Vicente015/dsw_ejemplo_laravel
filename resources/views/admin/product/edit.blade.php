@@ -12,7 +12,7 @@
 
 <div class="card mb-4">
     <div class="card-header">
-        Crear producto
+        Editar producto
     </div>
     <div class="card-body">
         @if ($errors->any())
@@ -25,19 +25,21 @@
         </div>
         @endif
 
-        <form method="POST" action="{{ route('admin.product.post') }}" enctype="multipart/form-data">
+        <form method="post" action="{{ route('admin.product.update') }}" enctype="multipart/form-data">
             @csrf
+            {{ method_field('PUT') }}
+            <input type="hidden" id="id" name="id" value="{{ $viewData["product"]->id}}">
             <div class="mb-3">
                 <label for="name" class="form-label">Nombre:</label>
-                <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}">
+                <input type="text" class="form-control" id="name" name="name" value="{{ $viewData["product"]->name }}">
             </div>
             <div class="mb-3">
                 <label for="price" class="form-label">Precio:</label>
-                <input type="number" class="form-control" id="price" name="price" value="{{ old('price') }}">
+                <input type="number" class="form-control" id="price" name="price" value="{{ $viewData["product"]->price }}">
             </div>
             <div class="mb-3">
                 <label for="description" class="form-label">Descripción:</label>
-                <textarea class="form-control" id="description" name="description" rows="3">{{ old('description') }}</textarea>
+                <textarea class="form-control" id="description" name="description" rows="3">{{ $viewData["product"]->description }}</textarea>
             </div>
             <div class="mb-3">
                 <label for="image" class="form-label">Imagen:</label>
@@ -73,12 +75,7 @@
                     <td>{{ $product->description }}</td>
                     <td>
                         <a href="{{ route('admin.product.edit', $product->id) }}" class="btn btn-primary">Editar</a>
-                        <form method="post" action="{{ route('admin.product.delete') }}">
-                            @csrf
-                            {{ method_field('DELETE') }}
-                            <input type="hidden" id="id" name="id" value="{{  $product->id }}">
-                            <button type="submit" class="btn btn-primary">Eliminar</button>
-                        </form>
+                        <a href="#">Eliminar</a>
                     </td>
                 </tr>
                 @endforeach
